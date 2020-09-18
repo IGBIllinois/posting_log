@@ -10,8 +10,6 @@
 
 define("TITLE","");
 define("FOOTER","");
-define("SESSION_NAME","posting_log");
-define("SESSION_TIMEOUT",3600);
 define("COUNT",30);
 define("TIMEZONE","America/Chicago");
 //////////Mysql Settings//////////////
