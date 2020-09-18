@@ -4,6 +4,6 @@
 		"components/jquery": "3.5.1",
                 "components/jqueryui": "1.12.1",
 		"twbs/bootstrap": "4.5.2",
-		"fortawesome/font-awesome": "5.14.0",
+		"fortawesome/font-awesome": "5.14.0"
     }
 }
