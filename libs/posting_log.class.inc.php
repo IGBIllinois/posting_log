@@ -6,6 +6,8 @@ class posting_log {
 	private $db; 
 	private $logfile;
 	const query_identifier = "X-Amz-Algorithm=AWS4-HMAC-SHA256";
+	const success_char = "+";
+	const db_table = "posting_log";
 
 	////////////////Public Functions///////////
 
@@ -25,8 +27,26 @@ class posting_log {
 	
 		foreach($contents as $line) {
 			$json = json_decode($line);
+			$data = array();
 			if (strpos($json->query,self::query_identifier)) {
-				var_dump($json);
+				$formatted_time = trim(trim($json->time,"["),"]");
+				$time_access = strtotime($formatted_time);
+				echo "Time: " . $time_access;
+				
+				$data['time_access'] = date('Y-m-d H:i:s',$time_access);
+				$data['remote_ip'] = $json->remoteIP;
+				$data['filename'] = substr($json->request,strpos($json->request,"/",1));
+				$data['useragent'] = $json->userAgent;
+				$data['success'] = false;
+				if ($json->success == self::success_char) {
+					$data['success'] = true;
+				}
+				parse_str($json->query,$get_variables);
+				if (isset($get_variables['?x-email'])) {
+					$data['email'] = $get_variables['?x-email'];
+				}
+				$data['json'] = $line;
+				$this->insert($data);
 			}
 
 		}
@@ -36,7 +56,7 @@ class posting_log {
 	}
 
 	private function insert($data) {
-		
+		$this->db->build_insert(self::db_table,$data);	
 
 
 	}

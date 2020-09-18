@@ -11,11 +11,11 @@ $log_html .= "<tbody>";
 
 foreach ($logs as $item) {
 	$log_html .= "<tr>";
-	$log_html .= "<td>" . $item['posting_log_time'] . "</td>";
-	$log_html .= "<td>" . $item['posting_log_remote_ip'] . "</td>";
-	$log_html .= "<td>" . $item['posting_log_email'] . "</td>";
-	$log_html .= "<td>" . $item['posting_log_filename'] . "</td>";
-	$log_html .= "<td>" . $item['posting_log_success'] . "</td>";
+	$log_html .= "<td>" . $item['time_access'] . "</td>";
+	$log_html .= "<td>" . $item['remote_ip'] . "</td>";
+	$log_html .= "<td>" . $item['email'] . "</td>";
+	$log_html .= "<td>" . $item['filename'] . "</td>";
+	$log_html .= "<td>" . $item['success'] . "</td>";
 	$log_html .= "</tr>";
 
 }
