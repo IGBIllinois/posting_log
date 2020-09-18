@@ -36,6 +36,7 @@ CustomLog /var/log/httpd/posting.example.com.log posting
 ```
 Alias /posting_log /var/www/posting_log/html
 <Directory /var/www/posting_log/html>
+	Options FollowSymLinks
 	AllowOverride All
 	Require all granted
 </Directory>
@@ -52,7 +53,6 @@ composer install
 ```
 * Create symlink to vendor folder from html folder
 ```
-cd html
-ln -s ../vendor vendor
+ln -s ../vendor html/vendor
 ```
 
