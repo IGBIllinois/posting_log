@@ -31,4 +31,8 @@ class settings {
 		return self::TIMEZONE;
 	}
 
+	public static function get_apache_log() {
+		return APACHE_LOG;
+
+	}
 }

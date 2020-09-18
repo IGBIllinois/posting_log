@@ -30,8 +30,8 @@ if (php_sapi_name() != 'cli') {
 
 $db = new db(MYSQL_HOST,MYSQL_DATABASE,MYSQL_USER,MYSQL_PASSWORD);
 
-
-
+$posting_log = new posting_log($db,settings::get_apache_log());
+$posting_log->readlog();
 
 
 
