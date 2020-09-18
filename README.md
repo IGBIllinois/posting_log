@@ -27,7 +27,7 @@ GRANT SELECT,INSERT,DELETE,UPDATE ON posting_log.* to 'posting_log'@'localhost';
 ```
 mysql -u root -p posting_log < sql/posting_log.sql
 ```
-* Edit Apache virtual host config file.  Add a custom log 
+* Edit Apache virtual host config file.  Add a custom log.  This formats the log as JSON to make it easier to parse 
 ```
 LogFormat "{ \"time\":\"%t\", \"remoteIP\":\"%a\", \"host\":\"%V\", \"request\":\"%U\", \"query\":\"%q\", \"method\":\"%m\", \"status\":\"%>s\", \"userAgent\":\"%{User-agent}i\", \"referer\":\"%{Referer}i\", \"success\":\"%X\" }" posting
 CustomLog /var/log/httpd/posting.example.com.log posting
