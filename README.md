@@ -1,5 +1,6 @@
 # Posting Log
 Biotech Website to view apache logs for downloaded files
+This is used with [https://github.com/IGBIllinois/s3_posting](https://github.com/IGBIllinois/s3_posting)
 
 [![Build Status](https://www.travis-ci.com/IGBIllinois/posting_log.svg?token=6A3MBozQfRa8weLubuLw&branch=master)](https://www.travis-ci.com/IGBIllinois/posting_log)
 
