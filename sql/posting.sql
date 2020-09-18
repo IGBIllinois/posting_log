@@ -8,6 +8,6 @@ CREATE TABLE posting_log (
 	json JSON NOT NULL,
 	success BOOLEAN,
 	PRIMARY KEY(id),
-	UNIQUE KEY (time_access,remote_ip,email,filename)
+	UNIQUE unique_index(time_access,remote_ip,email,filename)
 ) ENGINE=InnoDB;
 
