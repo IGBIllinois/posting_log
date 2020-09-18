@@ -40,6 +40,7 @@ Alias /posting_log /var/www/posting_log/html
 	Require all granted
 </Directory>
 ```
+* If you want to restrict access, create /html/.htaccess file with the appropriate restrictions. [https://httpd.apache.org/docs/2.4/howto/htaccess.html](https://httpd.apache.org/docs/2.4/howto/htaccess.html)
 * Copy conf/settings.inc.php.dist to conf/settings.inc.php
 ```
 cp conf/settings.inc.php.dist conf/settings.inc.php
