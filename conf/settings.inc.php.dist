@@ -1,0 +1,25 @@
+<?php
+////////////////////////////////////
+//
+//	settings.inc.php
+//
+//	Settings for the scripts.
+//
+//
+////////////////////////////////////
+
+define("TITLE","");
+define("FOOTER","");
+define("SESSION_NAME","posting_log");
+define("SESSION_TIMEOUT",3600);
+define("COUNT",30);
+define("TIMEZONE","America/Chicago");
+//////////Mysql Settings//////////////
+define("MYSQL_HOST","");
+define("MYSQL_USER","");
+define("MYSQL_PASSWORD","");
+define("MYSQL_DATABASE","");
+
+define("DEBUG",FALSE);
+
+?>
