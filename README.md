@@ -1,6 +1,14 @@
 # Posting Log
 Biotech Website to view apache logs for downloaded files
 
+[![Build Status](https://www.travis-ci.com/IGBIllinois/posting_log.svg?token=6A3MBozQfRa8weLubuLw&branch=master)](https://www.travis-ci.com/IGBIllinois/posting_log)
+
+## Requirements
+* Apache
+* PHP
+* PHP JSON
+* PHP MYSQL
+
 ## Installation
 * Git clone repository or download a tag release
 ```
