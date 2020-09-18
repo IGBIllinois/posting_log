@@ -7,7 +7,7 @@ class posting_log {
 	
 	////////////////Public Functions///////////
 
-        public function __construct($db) {
+        public function __construct($db,$logfile) {
                 $this->db = $db
 
 
