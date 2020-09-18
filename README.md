@@ -35,10 +35,10 @@ CustomLog /var/log/httpd/posting.example.com.log posting
 * Add apache config to apache configuration to point ot the html directory
 ```
 Alias /posting_log /var/www/posting_log/html
-<Location /posting_log>
+<Directory /var/www/posting_log/html>
 	AllowOverride None
 	Require all granted
-</Location>
+</Directory>
 ```
 * Copy conf/settings.inc.php.dist to conf/settings.inc.php
 ```
