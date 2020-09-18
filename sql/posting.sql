@@ -7,6 +7,7 @@ CREATE TABLE posting_log (
 	useragent VARCHAR(255),
 	json JSON NOT NULL,
 	success BOOLEAN,
-	PRIMARY KEY(id)
+	PRIMARY KEY(id),
+	UNIQUE KEY (time_access,remote_ip,email,filename)
 ) ENGINE=InnoDB;
 

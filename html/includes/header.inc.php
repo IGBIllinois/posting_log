@@ -32,4 +32,4 @@ require_once 'includes/main.inc.php';
 	<div class='row'>
 	</div>
 
-<div class='col-md-10 col-lg-10 col-xl-10'>
+<div class='col-md-12 col-lg-12 col-xl-12'>
