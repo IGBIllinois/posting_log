@@ -36,7 +36,7 @@ CustomLog /var/log/httpd/posting.example.com.log posting
 ```
 Alias /posting_log /var/www/posting_log/html
 <Directory /var/www/posting_log/html>
-	AllowOverride None
+	AllowOverride All
 	Require all granted
 </Directory>
 ```
