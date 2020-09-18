@@ -30,9 +30,7 @@ class posting_log {
 			$data = array();
 			if (strpos($json->query,self::query_identifier)) {
 				$formatted_time = trim(trim($json->time,"["),"]");
-				$time_access = strtotime($formatted_time);
-				echo "Time: " . $time_access;
-				
+				$time_access = strtotime($formatted_time);	
 				$data['time_access'] = date('Y-m-d H:i:s',$time_access);
 				$data['remote_ip'] = $json->remoteIP;
 				$data['filename'] = substr($json->request,strpos($json->request,"/",1));

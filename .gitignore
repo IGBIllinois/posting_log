@@ -1,4 +1,5 @@
 /conf/settings.inc.php
 /vendor
 /html/vendor
+/html/.htaccess
 composer.lock
