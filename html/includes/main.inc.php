@@ -16,6 +16,14 @@ function my_autoloader($class_name) {
 
 spl_autoload_register('my_autoloader');
 
-$db = new db(__MYSQL_HOST__,__MYSQL_DATABASE__,__MYSQL_USER__,__MYSQL_PASSWORD__);
+if (settings::get_debug()) {
+	ini_set("log_errors", 1);
+	ini_set('display_errors', 1); 
+	ini_set('display_startup_errors', 1); 
+	error_reporting(E_ALL);
+
+}
+
+$db = new db(MYSQL_HOST,MYSQL_DATABASE,MYSQL_USER,MYSQL_PASSWORD);
 
 ?>

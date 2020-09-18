@@ -8,7 +8,6 @@ require_once 'includes/main.inc.php';
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<script src='includes/main.inc.js' type='text/javascript'></script>
 <script src='vendor/components/jquery/jquery.min.js' type='text/javascript'></script>
 <script src='vendor/components/jqueryui/jquery-ui.min.js' type='text/javascript'></script>
 <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
@@ -18,14 +17,14 @@ require_once 'includes/main.inc.php';
 <link rel="stylesheet" type="text/css" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="vendor/fortawesome/font-awesome/css/all.min.css">
 
-<title><?php echo __TITLE__; ?></title>
+<title><?php echo settings::get_title(); ?></title>
 
 </head>
 
 <body style='padding-top: 70px; padding-bottom: 60px;'>
 <nav class='navbar fixed-top navbar-dark bg-dark'>
-	<a class='navbar-brand py-0' href='#'><?php echo __TITLE__; ?></a>
-	<span class='navbar-text py-0'>Version <?php echo __VERSION__; ?>&nbsp;
+	<a class='navbar-brand py-0' href='#'><?php echo settings::get_title(); ?></a>
+	<span class='navbar-text py-0'>Version <?php echo settings::get_version(); ?>&nbsp;
 	</span>
 </nav>
 <p>

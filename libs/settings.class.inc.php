@@ -3,6 +3,7 @@
 class settings {
 
 	private const DEBUG = false;
+	private const TIMEZONE = "UTC";
 
 	public static function get_version() {
 		return VERSION;
