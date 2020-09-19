@@ -70,12 +70,17 @@ class db {
 	//$args - array of arguments to insert into sql string
 	//returns the id number of the new record, 0 if it fails
 	public function insert_query($sql,$args=array()) {
-		$result = $this->link->prepare($sql);
-		$retVal = $result->execute($args);
-		if ($retVal === false) {
-			//log::log_message("INSERT ERROR: " . $sql,false);
+		try {
+			$result = $this->link->prepare($sql);
+			$retVal = $result->execute($args);
+			if ($retVal === false) {
+				//log::log_message("INSERT ERROR: " . $sql,false);
+			}
+			return $this->link->lastInsertId();
 		}
-		return $this->link->lastInsertId();
+		catch(PDOException $e) {
+			echo $e->getMessage();
+		}
 	}
 
 	//build_insert()
@@ -112,9 +117,14 @@ class db {
 	//For update and delete queries
 	//returns true on success, false otherwise
 	public function non_select_query($sql,$args=array()) {
-		$result = $this->link->prepare($sql);
-		$retval = $result->execute($args);
-		return $retval;
+		try {
+			$result = $this->link->prepare($sql);
+			$retval = $result->execute($args);
+			return $retval;
+		}
+                catch(PDOException $e) {
+                        echo $e->getMessage();
+                }
 	}
 
 	//query()
@@ -122,9 +132,14 @@ class db {
 	//Used for SELECT queries
 	//returns an associative array of the select query results.
 	public function query($sql,$args=array()) {
-		$result = $this->link->prepare($sql);
-		$result->execute($args);
-		return $result->fetchAll(PDO::FETCH_ASSOC);
+		try {
+			$result = $this->link->prepare($sql);
+			$result->execute($args);
+			return $result->fetchAll(PDO::FETCH_ASSOC);
+		}
+		catch(PDOException $e) {
+			echo $e->getMessage();
+		}
 	}
 
 	//getLink
@@ -137,19 +152,29 @@ class db {
 	//pings the mysql server to see if connection is alive
 	//returns true if alive, false otherwise
 	public function ping() {
-		if ($this->link->getAttribute(PDO::ATTR_CONNECTION_STATUS)) {
-			return true;
+		try {
+			if ($this->link->getAttribute(PDO::ATTR_CONNECTION_STATUS)) {
+				return true;
+			}
+		}
+		catch(PDOException $e) {
+			echo $e->getMessage();
 		}
 		return false;
 
 	}
 
 	public function transaction($sql,$args) {
-		$this->link->beginTransaction();
-		$result = $this->link->prepare($sql);
-		$result->execute();
-		$this->link->commit();
-		return $this->link->rowCount();
+		try {
+			$this->link->beginTransaction();
+			$result = $this->link->prepare($sql);
+			$result->execute();
+			$this->link->commit();
+			return $this->link->rowCount();
+		}
+		catch(PDOException $e) {
+			echo $e->getMessage();
+		}
 
 	}
 
@@ -179,14 +204,19 @@ class db {
                         return $result;
                 }
                 catch(PDOException $e) {
-                        echo "<br>Error: " . $e->getMessage();
+                        echo $e->getMessage();
                 }
 
 
         }
 
 	public function get_version() {
-		return $this->link->getAttribute(PDO::ATTR_SERVER_VERSION);
+		try {
+			return $this->link->getAttribute(PDO::ATTR_SERVER_VERSION);
+		}
+		catch(PDOException $e) {
+			echo $e->getMessage();
+		}
 
 	}
 
