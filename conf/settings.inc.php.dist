@@ -9,8 +9,7 @@
 ////////////////////////////////////
 
 define("TITLE","");
-define("FOOTER","");
-define("COUNT",30);
+define("COUNT",50);
 define("TIMEZONE","America/Chicago");
 //////////Mysql Settings//////////////
 define("MYSQL_HOST","");
