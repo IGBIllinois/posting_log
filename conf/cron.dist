@@ -1,3 +1,3 @@
 ################ Posting Log ####################
 
-0 * * * * root php /var/www/posting_log/bin/scrap.log.php > /dev/null 2>&1
+0 * * * * root php /var/www/posting_log/bin/scrap_log.php > /dev/null 2>&1
