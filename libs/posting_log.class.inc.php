@@ -30,22 +30,25 @@ class posting_log {
 			$data = array();
 			if (strpos($json->query,self::query_identifier)) {
 				$formatted_time = trim(trim($json->time,"["),"]");
-				$time_access = strtotime($formatted_time);	
+				$time_access = strtotime($formatted_time . ' UTC');	
 				$data['time_access'] = date('Y-m-d H:i:s',$time_access);
 				$data['remote_ip'] = $json->remoteIP;
 				$data['remote_hostname'] = gethostbyaddr($json->remoteIP);
 				$data['filename'] = substr($json->request,strpos($json->request,"/",1));
 				$data['useragent'] = $json->userAgent;
-				$data['success'] = false;
+				$data['success'] = 0;
 				if ($json->success == self::success_char) {
-					$data['success'] = true;
+					$data['success'] = 1;
 				}
 				parse_str($json->query,$get_variables);
 				if (isset($get_variables['?x-email'])) {
 					$data['email'] = $get_variables['?x-email'];
 				}
 				$data['json'] = $line;
-				$this->insert($data);
+				//print_r($data);
+				if($this->insert($data)) {
+					echo "Inserted: " . $data['email'] . "," . $data['time_access'] . "," . $data['remote_ip'] . "," . $data['filename'] . "\n";
+				}
 			}
 
 		}
@@ -55,7 +58,12 @@ class posting_log {
 	}
 
 	private function insert($data) {
-		$this->db->build_insert(self::db_table,$data);	
+		try {
+			return $this->db->build_insert(self::db_table,$data);	
+		}
+		catch(PDOException $e) {
+			return 0;
+		}
 
 
 	}

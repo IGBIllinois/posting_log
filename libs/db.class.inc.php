@@ -74,13 +74,13 @@ class db {
 			$result = $this->link->prepare($sql);
 			$retVal = $result->execute($args);
 			if ($retVal === false) {
-				//log::log_message("INSERT ERROR: " . $sql,false);
 			}
 			return $this->link->lastInsertId();
 		}
 		catch(PDOException $e) {
 			echo $e->getMessage();
 		}
+		return 0;
 	}
 
 	//build_insert()
