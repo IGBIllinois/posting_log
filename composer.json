@@ -8,6 +8,7 @@
 		"pear/mail_mime": "1.10.9",
 		"pear/auth_sasl": "v1.1.0",
 		"pear/net_smtp": "1.9.2",
-		"pear/mail": "1.4.1"
+		"pear/mail": "1.4.1",
+		"twig/twig": "v3.0.5"
     }
 }

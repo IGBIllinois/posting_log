@@ -19,4 +19,10 @@ define("MYSQL_DATABASE","");
 define("APACHE_LOG","");
 define("DEBUG",FALSE);
 
+/////////Email Settings///////////
+define("SMTP_HOST","localhost");
+define("SMTP_PORT",25);
+define("FROM","");
+define("TO","");
+
 ?>
