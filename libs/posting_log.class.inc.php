@@ -33,6 +33,7 @@ class posting_log {
 				$time_access = strtotime($formatted_time);	
 				$data['time_access'] = date('Y-m-d H:i:s',$time_access);
 				$data['remote_ip'] = $json->remoteIP;
+				$data['remote_hostname'] = gethostbyaddr($json->remoteIP);
 				$data['filename'] = substr($json->request,strpos($json->request,"/",1));
 				$data['useragent'] = $json->userAgent;
 				$data['success'] = false;

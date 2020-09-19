@@ -2,6 +2,7 @@ CREATE TABLE posting_log (
 	id INT NOT NULL AUTO_INCREMENT,
 	time_access DATETIME,
 	remote_ip VARCHAR(20),
+	remote_hostname VARCHAR(255),
 	email VARCHAR(255),
 	filename VARCHAR(255),
 	useragent VARCHAR(255),
