@@ -1,5 +1,5 @@
 # Posting Log
-Biotech Website to view apache logs for downloaded files
+Biotech Website to view apache logs for downloaded files via S3 Minio URLs
 
 This is used with [https://github.com/IGBIllinois/s3_posting](https://github.com/IGBIllinois/s3_posting)
 
