@@ -71,22 +71,28 @@ elseif (isset($options['dry-run'])) {
 
 $db = new db(MYSQL_HOST,MYSQL_DATABASE,MYSQL_USER,MYSQL_PASSWORD);
 
+$logs = settings::get_apache_logs();
 
-$posting_log = new posting_log($db,settings::get_apache_log());
-try {
-	$result = $posting_log->readlog($dry_run);
-	if ($result > 0) {
-		print "Successfully imported " . $result . " from log " . settings::get_apache_log() . "\n";
+$count = 0;
+foreach ($logs as $log) {
+	try {
+		$posting_log = new posting_log($db,$log);
+		$result = $posting_log->readlog($dry_run);
+		if ($result) {
+			print "Successfully imported " . $result . " from " . $log . "\n";
+			$count += $result;
+		}
+		else {
+			print "No records to import from " . $log . "\n";
+		}
 	}
-	else {
-		print "No records to import from " . settings::get_apache_log() . "\n";
+	catch (Exception $e) {
+		print "Error: " . $e->getMessage() . "\n";
 	}
 }
-catch (Exception $e) {
-	print $e->getMessage() . "\n";
+
+if ($count) {
+	print "Successfully imported a total of " . $count . " records\n";
 }
-
-
-
 
 ?>

@@ -33,8 +33,13 @@ class settings {
 		return self::TIMEZONE;
 	}
 
-	public static function get_apache_log() {
-		return APACHE_LOG;
+	public static function get_apache_logs() {
+		if (defined("APACHE_LOG") && (APACHE_LOG != "") && file_exists(APACHE_LOG)) {			
+			$files = glob(APACHE_LOG . "*");
+			return $files;
+
+		}
+		return array();
 
 	}
 	public static function get_twig_dir() {
