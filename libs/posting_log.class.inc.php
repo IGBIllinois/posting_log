@@ -25,10 +25,11 @@ class posting_log {
 	public function readlog($dry_run = false) {
 
 		if (!file_exists($this->logfile)) {
+			throw new Exception("Apache Log does not exist");
 			return false;
 		}
 		$contents = file($this->logfile);
-	
+		$count = 0;	
 		foreach($contents as $line) {
 			$json = json_decode($line);
 			$data = array();
@@ -52,11 +53,12 @@ class posting_log {
 				
 				if($dry_run && $this->insert($data)) {
 					echo "Inserted: " . $data['email'] . "," . $data['time_access'] . "," . $data['remote_ip'] . "," . $data['filename'] . "\n";
+					$count++;
 				}
 			}
 
 		}
-		return true;
+		return $count;
 
 
 	}

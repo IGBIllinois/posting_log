@@ -73,15 +73,19 @@ $db = new db(MYSQL_HOST,MYSQL_DATABASE,MYSQL_USER,MYSQL_PASSWORD);
 
 
 $posting_log = new posting_log($db,settings::get_apache_log());
-$result = $posting_log->readlog($dry_run);
-
-if ($result) {
-	print "Successfully imported log " . settings::get_apache_log() . "\n";
+try {
+	$result = $posting_log->readlog($dry_run);
+	if ($result > 0) {
+		print "Successfully imported " . $result . " from log " . settings::get_apache_log() . "\n";
+	}
+	else {
+		print "No records to import from " . settings::get_apache_log() . "\n";
+	}
 }
-else {
-	print "Error importing log.  Please verify log file exists\n";
-
+catch (Exception $e) {
+	print $e->getMessage() . "\n";
 }
+
 
 
 
