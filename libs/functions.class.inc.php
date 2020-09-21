@@ -53,8 +53,8 @@ class functions {
 	}
 
 
-	public static function get_num_log_entries($db,$search) {
-		return count(self::get_log($db,$search));
+	public static function get_num_log_entries($db,$search = "",$start_date = 0,$end_date = 0) {
+		return count(self::get_log($db,$search,0,0,$start_date,$end_date));
 
 
 	}
@@ -120,6 +120,10 @@ class functions {
 		$end_date = date('Y-m-d H:i:s',strtotime('-1 second',strtotime('+1 day',strtotime($inDate))));
 		$subject = "Posting Log - " . $short_date;
 		$to = settings::get_emails();
+		if (!self::get_num_log_entries($db,$search = "",$start_date,$end_date)) {
+			throw new Exception("No Log Entries for " . $short_date . ". No Email Sent");
+			return false;
+		}
 		$twig_variables = array(
 			'css'=> settings::get_email_css_contents(), 
 			'date_downloaded' => $short_date,

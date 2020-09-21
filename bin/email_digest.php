@@ -83,7 +83,18 @@ $db = new db(MYSQL_HOST,MYSQL_DATABASE,MYSQL_USER,MYSQL_PASSWORD);
 $start_date = $log_date . " 00:00:00";
 $end_date = $log_date . " 23:59:59";
 
-functions::send_emaiL_digest($db,$start_date,$end_date);
+try {
+	$result = functions::send_email_digest($db,$start_date,$end_date);
+	if ($result) {
+	        print "Email successfully sent\n";
+	}
+	else {
+        	print "Error sending email\n";
+	}
+}
+catch (Exception $e) {
+	print $e->getMessage() . "\n";
+}
 
 
 ?>
