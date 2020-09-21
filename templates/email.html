@@ -9,16 +9,22 @@
 
 <table class='table table-bordered table-sm table-stripped'>
 <thead >
-<th>Time</th><th>Remote IP</th><th>Remote Hostname</th><th>Email</th><Filename</th><th>Success</th>
+<th>Time</th><th>Remote IP</th><th>Remote Hostname</th><th>Email</th><th>Filename</th><th>Success</th>
 </thead>
 <tbody>
 {% for row in log_table %}
+	<tr>
 	<td> {{ row.time_access }} </td>
 	<td> {{ row.remote_ip }} </td>
 	<td> {{ row.remote_hostname }} </td>
 	<td> {{ row.email }} </td>
 	<td> {{ row.filename }} </td>
-	<td> {{ row.success }} </td>	
+	{% if row.success %}
+		<td><span class='badge badge-pill badge-success'>Success</span></td>
+	{% else %}
+		<td><span class='badge badge-pill badge-danger'>Failure</span></td>
+	{% endif %}
+	</tr>
 
 {% endfor %}
 </tbody>

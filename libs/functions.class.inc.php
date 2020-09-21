@@ -22,7 +22,7 @@ class functions {
 
 		}
 		if (($start_date != 0) && ($end_date != 0 )) {
-			$date_sql = "time_access BETWEEN CAST('" . $start_date . "' AS DATE) AND CAST('" . $end_date . "' AS DATE) ";
+			$date_sql = "time_access BETWEEN '" . $start_date . "' AND '" . $end_date . "' ";
 			array_push($where_sql,$date_sql);
 		}
 
@@ -118,7 +118,6 @@ class functions {
 		$start_date = $inDate;
 		$short_date = date('Y-m-d',strtotime($inDate));
 		$end_date = date('Y-m-d H:i:s',strtotime('-1 second',strtotime('+1 day',strtotime($inDate))));
-
 		$subject = "Posting Log - " . $short_date;
 		$to = settings::get_emails();
 		$twig_variables = array(

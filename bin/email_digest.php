@@ -1,5 +1,4 @@
 #!/usr/bin/env php
-
 <?php
 
 chdir(dirname(__FILE__));
@@ -35,14 +34,14 @@ $log_date = date("Y-m-d",strtotime("-1 days"));
 
 //Command parameters
 $output_command = "Usage: php email_digest.php \n";
-$output_command .= "    --date		(YYYY-MM-DD) (Defaults to yesterday)\n";
+$output_command .= "	--date		(YYYY-MM-DD) (Defaults: Yesterday)\n";
 $output_command .= "	--help		Show this help menu\n";
 $output_command .= "	--version	Show Version\n";
 
 $shortopts = "h";
 
 $longopts = array(
-        "date",
+        "date::",
         "help",
         "version"
 );
@@ -64,6 +63,10 @@ elseif (isset($options['version'])) {
         exit(0);
 }
 elseif (isset($options['date'])) {
+	if ($options['date'] == "") {
+		print("Please specify date with --date='YYYY-MM-DD'\n");
+		exit(1);
+	}
 	if (!functions::verify_date($options['date'])) {
 		print("Invalid date format for --date\n");
                 exit(1);
