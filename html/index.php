@@ -72,9 +72,10 @@ foreach ($logs as $item) {
 <?php echo $log_html; ?>
 
 </tbody></table>
-
-
 <?php 
+
+echo $pages_html;
+
 
 require_once 'includes/footer.inc.php';
 ?>
