@@ -28,10 +28,25 @@ foreach ($logs as $item) {
 }
 $log_html .= "</tbody></table>";
 
-
-echo $log_html;
 ?>
+<div class='row'>
+<div class='col-sm-4 col-md-4 col-lg-4 col-xl-4'>
+<form class='form-inline' method='get' action='<?php echo $_SERVER['PHP_SELF']; ?>'>
+	<div class='input-group'>	
+		<input type='text' class='form-control' id='search' placeholder='Search'>
+		<div class='input-group-append'>
+			<button class='btn btn-primary'>Search</button>
+		</div>
+	</div>
+
+
+
+</form>
+</div>
+</div>
+<br>
 <?php
+echo $log_html;
 
 
 require_once 'includes/footer.inc.php';

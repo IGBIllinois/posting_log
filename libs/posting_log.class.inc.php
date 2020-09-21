@@ -8,6 +8,7 @@ class posting_log {
 	const query_identifier = "X-Amz-Algorithm=AWS4-HMAC-SHA256";
 	const success_char = "+";
 	const db_table = "posting_log";
+	const email_variable = "x-email";
 
 	////////////////Public Functions///////////
 
@@ -41,8 +42,8 @@ class posting_log {
 					$data['success'] = 1;
 				}
 				parse_str($json->query,$get_variables);
-				if (isset($get_variables['?x-email'])) {
-					$data['email'] = $get_variables['?x-email'];
+				if (isset($get_variables["?" . self::email_attribute])) {
+					$data['email'] = $get_variables["?" . self::email_attribute];
 				}
 				$data['json'] = $line;
 				//print_r($data);
