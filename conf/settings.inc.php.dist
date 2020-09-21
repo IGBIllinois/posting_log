@@ -9,6 +9,7 @@
 ////////////////////////////////////
 
 define("TITLE","");
+define("WEBSITE_URL","");
 define("COUNT",50);
 define("TIMEZONE","America/Chicago");
 //////////Mysql Settings//////////////

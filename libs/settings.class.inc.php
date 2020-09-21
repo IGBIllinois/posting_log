@@ -6,13 +6,17 @@ class settings {
 	private const TIMEZONE = "UTC";
 	private const SMTP_PORT = 25;
 	private const SMTP_HOST = "localhost";
+	private const TITLE = "Posting Log";
 
 	public static function get_version() {
 		return VERSION;
 	}
 
 	public static function get_title() {
-		return TITLE; 
+		if (defined("TITLE") && (TITLE != "")) {
+			return TITLE; 
+		}
+		return self::TITLE;
 	}
 
 
@@ -43,7 +47,7 @@ class settings {
 
 	}
 	public static function get_twig_dir() {
-		$dir = dirname(__DIR__) . "/" . __TWIG_DIR__;
+		$dir = dirname(__DIR__) . "/" . TWIG_DIR;
 		return $dir;
 	}
 

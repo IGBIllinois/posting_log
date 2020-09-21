@@ -1,6 +1,7 @@
 Hi,
 
-Below are the list of files downloaded on {{ date_downloaded }}.  You can view the log by going to {{ website_url }}.
+Below are the list of files downloaded on {{ date_downloaded }}.
+You can view the log by going to {{ website_url }}.
 
 {% for row in log_table %}
 	

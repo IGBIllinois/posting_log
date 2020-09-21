@@ -22,7 +22,7 @@ class functions {
 
 		}
 		if (($start_date != 0) && ($end_date != 0 )) {
-			$date_sql = "WHERE time_access BETWEEN CAST(" . $start_date . " AS DATE) AND CAST(" . $end_date . " AS DATE) ";
+			$date_sql = "time_access BETWEEN CAST('" . $start_date . "' AS DATE) AND CAST('" . $end_date . "' AS DATE) ";
 			array_push($where_sql,$date_sql);
 		}
 
@@ -45,7 +45,6 @@ class functions {
 		if ($count != 0) {
         	        $sql .= "LIMIT " . $start . "," . $count;
 	        }
-
 		return $result = $db->query($sql);	
 
 
@@ -115,22 +114,25 @@ class functions {
 
 
 
-	public static function send_email_digest($db,$start_date,$end_date) {
+	public static function send_email_digest($db,$inDate) {
+		$start_date = $inDate;
+		$end_date = date('Y-m-d H:i:s',strtotime('-1 second',strtotime('+1 day',strtotime($inDate))));
 
-		$subject = "Posting Log - " . functions::get_pretty_date($start_date) . "-" . functions::get_pretty_date($end_date);
-		$to = $this->get_email();
+		$subject = "Posting Log - " . $inDate;
+		$to = settings::get_emails();
 		$twig_variables = array(
+			'date_downloaded' => $inDate,
                	        'website_url' => settings::get_website_url(),
-                       	'log_table' => $this->get_logs($db,"",0,0,$start_date,$end_date),
+                       	'log_table' => self::get_log($db,"",0,0,$start_date,$end_date),
                 );
 
-		$loader = new Twig_Loader_Filesystem(settings::get_twig_dir());
-		$twig = new Twig_Environment($loader);
-		$from = settings::get_from_email();
-		$html_message = $twig->render("default/email.html",$twig_variables);
-		$txt_message = $twig->rendor("default/email.txt",$twig_variables);
+		$loader = new \Twig\Loader\FilesystemLoader(settings::get_twig_dir());
+		$twig = new \Twig\Environment($loader);
+		$html_message = $twig->render("email.html",$twig_variables);
+		$txt_message = $twig->render("email.txt",$twig_variables);
 		
-	
+
+		$from = settings::get_from_email();	
 		$extraheaders = array("From"=>$from,
 				"Subject"=>$subject
 		);
@@ -155,11 +157,12 @@ class functions {
 
 	}
 
-	public static function get_pretty_date($date) {
-		return substr($date,0,4) . "/" . substr($date,4,2) . "/" . substr($date,6,2);
-
+	public static function verify_date($inDate) {
+		$format = "Y-m-d";
+		$date = DateTime::createFromFormat($format,$inDate);
+		return $date && ($date->format($format) === $inDate);
+		
 	}
-
 }
 
 
