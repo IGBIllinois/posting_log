@@ -3,12 +3,24 @@ require_once 'includes/main.inc.php';
 require_once 'includes/header.inc.php';
 
 
-$logs = functions::get_log($db);
+$count = COUNT;
+$start = 0;
+if (isset($_GET['start']) && is_numeric($_GET['start'])) {
+        $start = $_GET['start'];
+}
+$search = "";
+if (isset($_GET['search'])) {
+        $search = $_GET['search'];
+}
 
-$log_html = "<table class='table table-sm table-striped table-bordered'>";
-$log_html .= "<thead>";
-$log_html .= "<th>Time</th><th>Remote IP</th><th>Remote Hostname</th><th>Email</th><th>Filename</th><th>Success</th></thead>";
-$log_html .= "<tbody>";
+
+
+$logs = functions::get_log($db,$search,$start,$count);
+$num_entries = functions::get_num_log_entries($db,$search);
+$pages_url = $_SERVER['PHP_SELF'] . "?search=" . $search;
+$pages_html = functions::get_pages_html($pages_url,$num_entries,$start,$count);
+
+$log_html = "";
 
 foreach ($logs as $item) {
 	$log_html .= "<tr>";
@@ -26,16 +38,17 @@ foreach ($logs as $item) {
 	$log_html .= "</tr>";
 
 }
-$log_html .= "</tbody></table>";
 
 ?>
 <div class='row'>
 <div class='col-sm-4 col-md-4 col-lg-4 col-xl-4'>
 <form class='form-inline' method='get' action='<?php echo $_SERVER['PHP_SELF']; ?>'>
+	<input type='hidden' name='count' value='<?php echo $count; ?>'>
+	<input type='hidden' name='start' value='<?php echo $start; ?>'>
 	<div class='input-group'>	
-		<input type='text' class='form-control' id='search' placeholder='Search'>
+		<input type='text' name='search' class='form-control' id='search' placeholder='Search'>
 		<div class='input-group-append'>
-			<button class='btn btn-primary'>Search</button>
+			<button type='submit' class='btn btn-primary'>Search</button>
 		</div>
 	</div>
 
@@ -45,9 +58,23 @@ $log_html .= "</tbody></table>";
 </div>
 </div>
 <br>
-<?php
-echo $log_html;
+<table class='table table-sm table-striped table-bordered'>
+	<thead>
+		<th>Time</th>
+		<th>Remote IP</th>
+		<th>Remote Hostname</th>
+		<th>Email</th>
+		<th>Filename</th>
+		<th>Success</th>
+	</thead>
+<tbody>
 
+<?php echo $log_html; ?>
+
+</tbody></table>
+
+
+<?php 
 
 require_once 'includes/footer.inc.php';
 ?>
