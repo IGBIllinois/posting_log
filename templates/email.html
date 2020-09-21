@@ -1,10 +1,14 @@
-<p>Hi,</p>
+<style>
+{{ css }}
+</style>
+<div class='container-fluid'><div class='col-sm-12 col-md-12 col-lg-12 col-xl-12'>
+<p><br>Hi,</p>
 
 <p>Below are the list of files downloaded on {{ date_downloaded }}.  
 <br>You can view the log by going to <a href='{{ website_url }}'>{{ website_url }}</p>
 
-<table>
-<thead>
+<table class='table table-bordered table-sm table-stripped'>
+<thead >
 <th>Time</th><th>Remote IP</th><th>Remote Hostname</th><th>Email</th><Filename</th><th>Success</th>
 </thead>
 <tbody>
@@ -19,5 +23,5 @@
 {% endfor %}
 </tbody>
 </table>
-
+</div>
 

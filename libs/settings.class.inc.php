@@ -82,4 +82,17 @@ class settings {
 		return self::SMTP_PORT;
 
 	}
+
+	public static function get_email_css() {
+			
+		$file_path = dirname(__DIR__) . "/" . EMAIL_CSS;
+		return $file_path;
+	}
+
+	public static function get_email_css_contents() {
+		$css = self::get_email_css();
+		$contents = file_get_contents($css); 
+		return file_get_contents($css);
+
+	}
 }

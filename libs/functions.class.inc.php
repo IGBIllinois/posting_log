@@ -116,12 +116,14 @@ class functions {
 
 	public static function send_email_digest($db,$inDate) {
 		$start_date = $inDate;
+		$short_date = date('Y-m-d',strtotime($inDate));
 		$end_date = date('Y-m-d H:i:s',strtotime('-1 second',strtotime('+1 day',strtotime($inDate))));
 
-		$subject = "Posting Log - " . $inDate;
+		$subject = "Posting Log - " . $short_date;
 		$to = settings::get_emails();
 		$twig_variables = array(
-			'date_downloaded' => $inDate,
+			'css'=> settings::get_email_css_contents(), 
+			'date_downloaded' => $short_date,
                	        'website_url' => settings::get_website_url(),
                        	'log_table' => self::get_log($db,"",0,0,$start_date,$end_date),
                 );
