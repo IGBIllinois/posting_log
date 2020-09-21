@@ -22,8 +22,11 @@ class posting_log {
         }
 
 
-	public function readlog() {
+	public function readlog($dry_run = false) {
 
+		if (!file_exists($this->logfile)) {
+			return false;
+		}
 		$contents = file($this->logfile);
 	
 		foreach($contents as $line) {
@@ -46,14 +49,14 @@ class posting_log {
 					$data['email'] = $get_variables["?" . self::email_attribute];
 				}
 				$data['json'] = $line;
-				//print_r($data);
-				if($this->insert($data)) {
+				
+				if($dry_run && $this->insert($data)) {
 					echo "Inserted: " . $data['email'] . "," . $data['time_access'] . "," . $data['remote_ip'] . "," . $data['filename'] . "\n";
 				}
 			}
 
 		}
-
+		return true;
 
 
 	}

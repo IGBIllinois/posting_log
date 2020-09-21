@@ -1,0 +1,22 @@
+<p>Hi,</p>
+
+<p>Below are the list of files downloaded on {{ date_downloaded }}.  You can view the log by going to {{ website_url }}.</p>
+
+<table>
+<thead>
+<th>Time</th><th>Remote IP</th><th>Remote Hostname</th><th>Email</th><Filename</th><th>Success</th>
+</thead>
+<tbody>
+{% for row in log_table %}
+	<td> {{ row.time_access }} </td>
+	<td> {{ row.remote_ip }} </td>
+	<td> {{ row.remote_hostname }} </td>
+	<td> {{ row.email }} </td>
+	<td> {{ row.filename }} </td>
+	<td> {{ row.success }} </td>	
+
+{% endfor %}
+</tbody>
+</table>
+
+

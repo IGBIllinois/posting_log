@@ -112,6 +112,53 @@ class functions {
                 return $pages_html;
 
         }
+
+
+
+	public static function send_email_digest($db,$start_date,$end_date) {
+
+		$subject = "Posting Log - " . functions::get_pretty_date($start_date) . "-" . functions::get_pretty_date($end_date);
+		$to = $this->get_email();
+		$twig_variables = array(
+               	        'website_url' => settings::get_website_url(),
+                       	'log_table' => $this->get_logs($db,"",0,0,$start_date,$end_date),
+                );
+
+		$loader = new Twig_Loader_Filesystem(settings::get_twig_dir());
+		$twig = new Twig_Environment($loader);
+		$from = settings::get_from_email();
+		$html_message = $twig->render("default/email.html",$twig_variables);
+		$txt_message = $twig->rendor("default/email.txt",$twig_variables);
+		
+	
+		$extraheaders = array("From"=>$from,
+				"Subject"=>$subject
+		);
+		$message = new Mail_mime();
+		$message->setHTMLBody($html_message);
+		$message->setTxtBody($txt_message);
+
+		$headers= $message->headers($extraheaders);
+		$body = $message->get();
+		$mail_params = array('host'=>settings::get_smtp_host(),
+				'port'=>settings::get_smtp_port()
+			);
+		$mail = Mail::factory("mail","-f " . $from,$mail_params);
+		$result = $mail->send($to,$headers,$body);
+		if (PEAR::isError($result)) {
+			$result = false;
+			print "Error " . $mail->getMessage();
+			return false;
+		}
+		return true;
+
+
+	}
+
+	public static function get_pretty_date($date) {
+		return substr($date,0,4) . "/" . substr($date,4,2) . "/" . substr($date,6,2);
+
+	}
 }
 
 
