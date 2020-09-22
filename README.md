@@ -10,7 +10,7 @@ This is used with [https://github.com/IGBIllinois/s3_posting](https://github.com
 * PHP
 * PHP JSON
 * PHP MYSQL
-* MySQL/MariaDB >= 10.2
+* MySQL/MariaDB >= 5.5
 
 ## Installation
 * Git clone repository or download a tag release

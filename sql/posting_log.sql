@@ -6,7 +6,7 @@ CREATE TABLE posting_log (
 	email VARCHAR(255),
 	filename VARCHAR(255),
 	useragent VARCHAR(255),
-	json JSON NOT NULL,
+	json TEXT NOT NULL,
 	success BOOLEAN,
 	PRIMARY KEY(id),
 	UNIQUE unique_index(time_access,remote_ip,email,filename)
