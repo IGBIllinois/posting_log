@@ -134,7 +134,6 @@ class functions {
 		$loader = new \Twig\Loader\FilesystemLoader(settings::get_twig_dir());
 		$twig = new \Twig\Environment($loader);
 		$html_message = $twig->render("email.html",$twig_variables);
-		$txt_message = $twig->render("email.txt",$twig_variables);
 		
 
 		$from = settings::get_from_email();	
@@ -143,7 +142,6 @@ class functions {
 		);
 		$message = new Mail_mime();
 		$message->setHTMLBody($html_message);
-		$message->setTxtBody($txt_message);
 
 		$headers= $message->headers($extraheaders);
 		$body = $message->get();
