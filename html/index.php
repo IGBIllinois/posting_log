@@ -76,8 +76,6 @@ foreach ($logs as $item) {
 <?php echo $pages_html; ?>
 <form class='form-inline' action='report.php' method='post'>
         <input type='hidden' name='search' value='<?php echo $search; ?>'> 
-	<input type='hidden' name='start_date' value='<?php echo $start_date; ?>'>
-	<input type='hidden' name='end_date' value='<?php echo $end_date; ?>'>
 
 	<select name='report_type' class='form-control'>
                 <option value='xlsx'>Excel 2007 (.xlsx)</option>

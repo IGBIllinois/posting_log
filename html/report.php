@@ -3,7 +3,7 @@ require_once 'includes/main.inc.php';
 
 if (isset($_POST['create_download_report'])) {
 
-	$data = functions::get_download_log($db,$_POST['search'],0,0,$_POST['start_date'],$_POST['end_date']);
+	$data = functions::get_download_log($db,$_POST['search']);
 	foreach ($data as &$row) {
 		unset($row['json']);
 	}
@@ -22,7 +22,7 @@ if (isset($_POST['create_download_report'])) {
 }
 
 elseif (isset($_POST['create_upload_report'])) {
-        $data = functions::get_upload_log($db,$_POST['search'],0,0,$_POST['start_date'],$_POST['end_date']);
+        $data = functions::get_upload_log($db,$_POST['search']);
 	foreach ($data as &$row) {
 		unset($row['json']);
 	}
