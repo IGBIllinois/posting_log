@@ -7,7 +7,7 @@
 <p>Below are the list of files downloaded and uploaded on {{ date_downloaded }}.  
 <br>You can view the log by going to <a href='{{ website_url }}'>{{ website_url }}</p>
 
-<h3>Downloads</h3>
+<h2>Downloads</h2>
 <table class='table table-bordered table-sm table-stripped'>
 <thead >
 <th>Time</th><th>Remote IP</th><th>Remote Hostname</th><th>Email</th><th>Filename</th><th>Success</th>
@@ -31,13 +31,13 @@
 </tbody>
 </table>
 
-<h3>Uploads</h3>
+<h2>Uploads</h2>
 <table class='table table-bordered table-sm table-stripped'>
 <thead >
 <th>Time</th><th>Remote IP</th><th>Remote Hostname</th><th>Filename</th><th>Success</th>
 </thead>
 <tbody>
-{% for row in uploads_log_table %}
+{% for row in upload_log_table %}
         <tr>
         <td> {{ row.time_access }} </td>
         <td> {{ row.remote_ip }} </td>
