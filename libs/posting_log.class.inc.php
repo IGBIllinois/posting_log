@@ -77,10 +77,17 @@ class posting_log {
                         	                $data['success'] = 1;
                                 	}
 	                                $data['json'] = $line;
-        	                        if (!$dry_run && self::upload_needs_updating($data['time_access'],$data['filename']) && self::insert_uploads($data)) {
-							
-                	                        echo "Inserted Uploads: " . $data['time_access'] . "," . $data['remote_ip'] . "," . $data['filename'] . "\n";
-                        	                $count++;
+        	                        if (!$dry_run) {
+						if (!self::upload_file_exists($data['filename'])) {
+							self::insert_uploads($data);							
+		               	                        echo "Inserted Uploads: " . $data['time_access'] . "," . $data['remote_ip'] . "," . $data['filename'] . "\n";
+                	        	                $count++;
+						}
+						elseif (self::upload_needs_updating($data['time_access'],$data['filename'])) {
+							self::update_uploads($data);
+                                                        echo "Updated Uploads: " . $data['time_access'] . "," . $data['remote_ip'] . "," . $data['filename'] . "\n";
+                                                        $count++;
+						}
                                 	}
 
 
@@ -114,14 +121,40 @@ class posting_log {
                 }
         }
 
+	private function update_uploads($data) {
+		$filename = $data['filename'];
+		unset($data['filename']);
+		try {
+			$result = $this->db->update("uploads",$data,"filename",$filename);
+		}
+		catch(PDOException $e) {
+			return 0;
+		}
+
+
+	}
+	private function upload_file_exists($filename) {
+		$sql = "SELECT count(1) as success from uploads WHERE filename=:filename";
+		$args = array(':filename'=>$filename);
+
+                try {
+                        $result = $this->db->query($sql,$args);
+                        return $result[0]['success'];
+                }
+                catch(PDOException $e) {
+                        return 0;
+                }
+
+
+	}
 	private function upload_needs_updating($time_access,$filename) {
-		$sql = "SELECT count(1) as success from uploads WHERE filename=:filename and time_access<=:time_access";
+		$sql = "SELECT count(1) as success from uploads WHERE filename=:filename and time_access<:time_access";
 		$args = array(':filename'=>$filename,
 			':time_access'=>$time_access,
 		);
 		try {
 			$result = $this->db->query($sql,$args);
-			return !$result[0]['success'];
+			return $result[0]['success'];
 		}
 		catch(PDOException $e) {
 			return 0;
