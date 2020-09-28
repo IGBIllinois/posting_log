@@ -183,7 +183,8 @@ class functions {
 			'css'=> settings::get_email_css_contents(), 
 			'date_downloaded' => $short_date,
                	        'website_url' => settings::get_website_url(),
-                       	'log_table' => self::get_download_log($db,"",0,0,$start_date,$end_date),
+                       	'download_log_table' => self::get_download_log($db,"",0,0,$start_date,$end_date),
+			'upload_log_table' => self::get_upload_log($db,"",0,0,$start_date,$end_date)
                 );
 
 		$loader = new \Twig\Loader\FilesystemLoader(settings::get_twig_dir());
