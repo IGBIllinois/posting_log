@@ -23,8 +23,11 @@ require_once 'includes/main.inc.php';
 
 <body style='padding-top: 70px; padding-bottom: 60px;'>
 <nav class='navbar fixed-top navbar-dark bg-dark'>
-	<a class='navbar-brand py-0' href='#'><?php echo settings::get_title(); ?></a>
-	<span class='navbar-text py-0'>Version <?php echo settings::get_version(); ?>&nbsp;
+	<a class='navbar-brand' href='#'><?php echo settings::get_title(); ?></a>
+	<span class='navbar-text'>
+	<a class='btn btn-primary' href='index.php'>Downloads</a>
+	<a class='btn btn-success' href='uploads.php'>Uploads</a>
+	Version <?php echo settings::get_version(); ?>&nbsp;
 	</span>
 </nav>
 <p>

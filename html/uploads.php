@@ -15,8 +15,8 @@ if (isset($_GET['search'])) {
 
 
 
-$logs = functions::get_download_log($db,$search,$start,$count);
-$num_entries = functions::get_num_download_log_entries($db,$search);
+$logs = functions::get_upload_log($db,$search,$start,$count);
+$num_entries = functions::get_num_upload_log_entries($db,$search);
 $pages_url = $_SERVER['PHP_SELF'] . "?search=" . $search;
 $pages_html = functions::get_pages_html($pages_url,$num_entries,$start,$count);
 
@@ -40,7 +40,7 @@ foreach ($logs as $item) {
 }
 
 ?>
-<h3>Downloads</h3>
+<h3>Uploads</h3>
 <div class='row'>
 <div class='col-sm-4 col-md-4 col-lg-4 col-xl-4'>
 <form class='form-inline' method='get' action='<?php echo $_SERVER['PHP_SELF']; ?>'>
