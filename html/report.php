@@ -4,6 +4,10 @@ require_once 'includes/main.inc.php';
 if (isset($_POST['create_download_report'])) {
 
 	$data = functions::get_download_log($db,$_POST['search'],0,0,$_POST['start_date'],$_POST['end_date']);
+	foreach ($data as &$row) {
+		unset($row['json']);
+	}
+	
 	$type = $_POST['report_type'];
 	$filename = "download_report." . $type; 
 
@@ -19,6 +23,9 @@ if (isset($_POST['create_download_report'])) {
 
 elseif (isset($_POST['create_upload_report'])) {
         $data = functions::get_upload_log($db,$_POST['search'],0,0,$_POST['start_date'],$_POST['end_date']);
+	foreach ($data as &$row) {
+		unset($row['json']);
+	}
 	$type = $_POST['report_type']; 
         $filename = "upload_report." . $type;
 
