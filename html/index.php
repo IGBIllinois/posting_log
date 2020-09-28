@@ -73,9 +73,21 @@ foreach ($logs as $item) {
 <?php echo $log_html; ?>
 
 </tbody></table>
+<?php echo $pages_html; ?>
+<form class='form-inline' action='report.php' method='post'>
+        <input type='hidden' name='search' value='<?php echo $search; ?>'> 
+	<input type='hidden' name='start_date' value='<?php echo $start_date; ?>'>
+	<input type='hidden' name='end_date' value='<?php echo $end_date; ?>'>
+
+	<select name='report_type' class='form-control'>
+                <option value='xlsx'>Excel 2007 (.xlsx)</option>
+                <option value='csv'>CSV (.csv)</option>
+		
+        </select> &nbsp;
+<input class='btn btn-primary' type='submit' name='create_download_report' value='Download Full Report'>&nbsp;
+
 <?php 
 
-echo $pages_html;
 
 
 require_once 'includes/footer.inc.php';

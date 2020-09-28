@@ -9,6 +9,7 @@
 		"pear/auth_sasl": "v1.1.0",
 		"pear/net_smtp": "1.9.2",
 		"pear/mail": "1.4.1",
-		"twig/twig": "v3.0.5"
+		"twig/twig": "v3.0.5",
+		"phpoffice/phpspreadsheet": "1.14.1"
     }
 }
