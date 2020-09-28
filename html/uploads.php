@@ -27,7 +27,6 @@ foreach ($logs as $item) {
 	$log_html .= "<td>" . $item['time_access'] . "</td>";
 	$log_html .= "<td>" . $item['remote_ip'] . "</td>";
 	$log_html .= "<td>" . $item['remote_hostname'] . "</td>";
-	$log_html .= "<td>" . $item['email'] . "</td>";
 	$log_html .= "<td>" . $item['filename'] . "</td>";
 	if ($item['success']) {
 		$log_html .= "<td><span class='badge badge-pill badge-success'>Success</span></td>";
@@ -61,10 +60,9 @@ foreach ($logs as $item) {
 <br>
 <table class='table table-sm table-striped table-bordered'>
 	<thead>
-		<th>Time</th>
+		<th>Time Uploaded</th>
 		<th>Remote IP</th>
 		<th>Remote Hostname</th>
-		<th>Email</th>
 		<th>Filename</th>
 		<th>Success</th>
 	</thead>
