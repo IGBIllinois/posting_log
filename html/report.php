@@ -44,7 +44,4 @@ elseif (isset($_POST['create_upload_report'])) {
 
 
 }
-
-
 ?>
-

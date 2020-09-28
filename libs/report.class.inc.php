@@ -16,8 +16,11 @@ class report {
 		header('Content-Disposition: attachment;filename=' . $filename);
 		header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
 		header('Pragma: public');
+		ob_end_clean();
 		$writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($excel_file,'Xls');
+		setlocale(LC_ALL, 'en_US');
 		$writer->save('php://output');
+		exit();
 
 	}
 
@@ -32,8 +35,11 @@ class report {
 		header("Content-Disposition: attachment;filename=" . $filename);
 		header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
 		header('Pragma: public');
+		ob_end_clean();
 		$writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($excel_file,'Xlsx');
+		setlocale(LC_ALL, 'en_US');
 		$writer->save('php://output');
+		exit();
 	}
 
         //create_pdf_report()
@@ -47,8 +53,11 @@ class report {
                 header("Content-Disposition: attachment;filename=" . $filename);
                 header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
                 header('Pragma: public');
+		ob_end_clean();
                 $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($excel_file,'Tcpdf');
+		setlocale(LC_ALL, 'en_US');
                 $writer->save('php://output');
+		exit();
         }
 
 	//create_generic_excel()
@@ -120,4 +129,3 @@ class report {
 
 }
 ?>
-
