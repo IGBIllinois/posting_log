@@ -175,7 +175,7 @@ class functions {
 		$end_date = date('Y-m-d H:i:s',strtotime('-1 second',strtotime('+1 day',strtotime($inDate))));
 		$subject = "Posting Log - " . $short_date;
 		$to = settings::get_emails();
-		if (!self::get_num_download_log_entries($db,$search = "",$start_date,$end_date)) {
+		if (!self::get_num_download_log_entries($db,"",$start_date,$end_date) && !self::get_num_upload_log_entries($db,"",$start_date,$end_date)) {
 			throw new Exception("No Log Entries for " . $short_date . ". No Email Sent");
 			return false;
 		}
