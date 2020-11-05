@@ -54,6 +54,7 @@ class posting_log {
 						$data['success'] = 1;
 					}
 					parse_str(substr($json->query,1),$get_variables);
+					$data['email'] = "";
 					if (isset($get_variables[self::email_variable])) {
 						$data['email'] = $get_variables[self::email_variable];
 					}
@@ -79,8 +80,8 @@ class posting_log {
 	                                $data['json'] = $line;
         	                        if (!$dry_run) {
 						if (!self::upload_file_exists($data['filename'])) {
-							self::insert_uploads($data);							
-		               	                        echo "Inserted Uploads: " . $data['time_access'] . "," . $data['remote_ip'] . "," . $data['filename'] . "\n";
+							$upload_id = self::insert_uploads($data);							
+		               	                        echo "Inserted Uploads: id: " . $upload_id . " Data: " . $data['time_access'] . "," . $data['remote_ip'] . "," . $data['filename'] . "\n";
                 	        	                $count++;
 						}
 						elseif (self::upload_needs_updating($data['time_access'],$data['filename'])) {
