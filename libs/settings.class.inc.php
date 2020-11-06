@@ -24,6 +24,9 @@ class settings {
 		return WEBSITE_URL;
 	}
 
+	public static function get_codewebsite_url() {
+		return CODEWEBSITE_URL;
+	}
 	public static function get_debug() {
 		if (defined("DEBUG") && (DEBUG != "")) {
 			return DEBUG;

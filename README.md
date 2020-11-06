@@ -54,8 +54,4 @@ cp conf/settings.inc.php.dist conf/settings.inc.php
 ```
 composer install
 ```
-* Create symlink to vendor folder from html folder
-```
-ln -s ../vendor html/vendor
-```
 

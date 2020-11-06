@@ -27,7 +27,7 @@ require_once 'includes/main.inc.php';
 	<span class='navbar-text'>
 	<a class='btn btn-primary' href='index.php'>Downloads</a>
 	<a class='btn btn-success' href='uploads.php'>Uploads</a>
-	Version <?php echo settings::get_version(); ?>&nbsp;
+	<a class='btn btn-secondary' href='about.php'>About</a>
 	</span>
 </nav>
 <p>

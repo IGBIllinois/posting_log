@@ -10,7 +10,7 @@ if (isset($_GET['start']) && is_numeric($_GET['start'])) {
 }
 $search = "";
 if (isset($_GET['search'])) {
-        $search = $_GET['search'];
+        $search = trim(rtrim($_GET['search']));
 }
 
 
@@ -43,11 +43,11 @@ foreach ($logs as $item) {
 <h3>Downloads</h3>
 <div class='row'>
 <div class='col-sm-4 col-md-4 col-lg-4 col-xl-4'>
-<form class='form-inline' method='get' action='<?php echo $_SERVER['PHP_SELF']; ?>'>
+<form class='form-inline' method='get' action='<?php echo $_SERVER['PHP_SELF']; ?>' autocomplete='off'>
 	<input type='hidden' name='count' value='<?php echo $count; ?>'>
 	<input type='hidden' name='start' value='<?php echo $start; ?>'>
 	<div class='input-group'>	
-		<input type='text' name='search' class='form-control' id='search' placeholder='Search'>
+		<input type='text' name='search' class='form-control' id='search' placeholder='Search' value='<?php echo $search;  ?>'>
 		<div class='input-group-append'>
 			<button type='submit' class='btn btn-primary'>Search</button>
 		</div>
