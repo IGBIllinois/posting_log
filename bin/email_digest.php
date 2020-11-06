@@ -67,7 +67,7 @@ elseif (isset($options['date'])) {
 		print("Please specify date with --date='YYYY-MM-DD'\n");
 		exit(1);
 	}
-	if (!functions::verify_date($options['date'])) {
+	if (!\IGBIllinois\Helper\date_helper::verify_date($options['date'])) {
 		print("Invalid date format for --date\n");
                 exit(1);
 	}
@@ -78,7 +78,7 @@ elseif (isset($options['date'])) {
 }
 
 
-$db = new db(MYSQL_HOST,MYSQL_DATABASE,MYSQL_USER,MYSQL_PASSWORD);
+$db = new \IGBIllinois\db(MYSQL_HOST,MYSQL_DATABASE,MYSQL_USER,MYSQL_PASSWORD);
 
 $start_date = $log_date . " 00:00:00";
 $end_date = $log_date . " 23:59:59";
@@ -86,7 +86,7 @@ $end_date = $log_date . " 23:59:59";
 try {
 	$result = functions::send_email_digest($db,$start_date,$end_date);
 	if ($result) {
-	        print "Email successfully sent\n";
+	        print "Email successfully sent to " . implode(",",settings::get_emails()) . "\n";
 	}
 	else {
         	print "Error sending email\n";

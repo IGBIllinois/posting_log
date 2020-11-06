@@ -216,12 +216,6 @@ class functions {
 
 	}
 
-	public static function verify_date($inDate) {
-		$format = "Y-m-d";
-		$date = DateTime::createFromFormat($format,$inDate);
-		return $date && ($date->format($format) === $inDate);
-		
-	}
 }
 
 
