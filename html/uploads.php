@@ -48,7 +48,7 @@ foreach ($logs as $item) {
 	<div class='input-group'>	
 		<input type='text' name='search' class='form-control' id='search' placeholder='Search' value='<?php echo $search; ?>'>
 		<div class='input-group-append'>
-			<button type='submit' class='btn btn-primary'>Search</button>
+			<button type='submit' class='btn btn-primary'><i class='fas fa-search'></i> Search</button>
 		</div>
 	</div>
 

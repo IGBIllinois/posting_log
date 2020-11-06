@@ -25,9 +25,9 @@ require_once 'includes/main.inc.php';
 <nav class='navbar fixed-top navbar-dark bg-dark'>
 	<a class='navbar-brand' href='#'><?php echo settings::get_title(); ?></a>
 	<span class='navbar-text'>
-	<a class='btn btn-primary' href='index.php'>Downloads</a>
-	<a class='btn btn-success' href='uploads.php'>Uploads</a>
-	<a class='btn btn-secondary' href='about.php'>About</a>
+	<a class='btn btn-primary' href='index.php'><i class='fas fa-download'></i> Downloads</a>
+	<a class='btn btn-success' href='uploads.php'><i class='fas fa-upload'></i> Uploads</a>
+	<a class='btn btn-secondary' href='about.php'><i class='fas fa-info-circle'></i> About</a>
 	</span>
 </nav>
 <p>
