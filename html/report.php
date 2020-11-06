@@ -13,10 +13,10 @@ if (isset($_POST['create_download_report'])) {
 
 	switch ($type) {
 		case 'csv':
-			report::create_csv_report($data,$filename);
+			\IGBIllinois\report::create_csv_report($data,$filename);
 			break;
 		case 'xlsx':
-			report::create_excel_2007_report($data,$filename);
+			\IGBIllinois\report::create_excel_2007_report($data,$filename);
 			break;
 	}
 }
@@ -32,10 +32,10 @@ elseif (isset($_POST['create_upload_report'])) {
 
         switch ($type) {
                 case 'csv':
-                        report::create_csv_report($data,$filename);
+                        \IGBIllinois\report::create_csv_report($data,$filename);
                         break;
                 case 'xlsx':
-                        report::create_excel_2007_report($data,$filename);
+                        \IGBIllinois\report::create_excel_2007_report($data,$filename);
                         break;
 
         }
