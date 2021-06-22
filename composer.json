@@ -17,7 +17,7 @@
 		"pear/mail": "1.4.1",
 		"twig/twig": "v3.0.5",
 		"phpoffice/phpspreadsheet": "1.14.1",
-		"igbillinois/igbillinois-php": "0.1"
+		"igbillinois/igbillinois-php": "1.0"
 	},
 	"scripts": {
 		"post-update-cmd": [

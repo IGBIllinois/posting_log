@@ -216,6 +216,23 @@ class functions {
 
 	}
 
+	public static function create_lock_file() {
+		$lock_file = settings::get_lock_file();
+		$pid = getmypid();
+		$result = file_put_contents($lock_file,$pid);
+		if ($result) {
+			return true;
+		}
+		return false;
+	}
+
+	public static function delete_lock_file() {
+		$lock_file = settings::get_lock_file();
+		if (file_exists($lock_file)) {
+			return unlink($lock_file);
+		}	
+		return false;
+	}
 }
 
 

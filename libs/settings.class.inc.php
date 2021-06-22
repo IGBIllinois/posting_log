@@ -92,6 +92,12 @@ class settings {
 		return $file_path;
 	}
 
+	public static function get_lock_file() {
+		if (defined("LOCK_FILE")) {
+			return LOCK_FILE;
+		}
+		return false;
+	}
 	public static function get_email_css_contents() {
 		$css = self::get_email_css();
 		$contents = file_get_contents($css); 

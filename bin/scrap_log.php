@@ -68,6 +68,17 @@ elseif (isset($options['dry-run'])) {
 
 }
 
+if (!settings::get_lock_file()) {
+	print "LOCK_FILE not defined in settings.inc.php.  Please specify a path where the lock file should be located.\n";
+	exit(1);
+}
+elseif (file_exists(settings::get_lock_file())) {
+	print "Lock File " . settings::get_lock_file() . " exists.  Exiting\n";
+	exit(1);
+}
+else {
+	functions::create_lock_file();	
+}
 $db = new \IGBIllinois\db(MYSQL_HOST,MYSQL_DATABASE,MYSQL_USER,MYSQL_PASSWORD);
 
 $logs = settings::get_apache_logs();
@@ -93,5 +104,13 @@ foreach ($logs as $log) {
 if ($count) {
 	print "Successfully imported a total of " . $count . " records\n";
 }
+
+$result = functions::delete_lock_file();
+if (!$result) {
+	print "Error deleting lock file " . settings::get_lock_file() . ".\n";
+	exit(1);
+
+}
+
 
 ?>
