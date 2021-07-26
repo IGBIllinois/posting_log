@@ -191,24 +191,12 @@ class functions {
 		$twig = new \Twig\Environment($loader);
 		$html_message = $twig->render("email.html",$twig_variables);
 		
-
-		$from = settings::get_from_email();	
-		$extraheaders = array("From"=>$from,
-				"Subject"=>$subject
-		);
-		$message = new Mail_mime();
-		$message->setHTMLBody($html_message);
-
-		$headers= $message->headers($extraheaders);
-		$body = $message->get();
-		$mail_params = array('host'=>settings::get_smtp_host(),
-				'port'=>settings::get_smtp_port()
-			);
-		$mail = Mail::factory("mail","-f " . $from,$mail_params);
-		$result = $mail->send($to,$headers,$body);
-		if (PEAR::isError($result)) {
-			$result = false;
-			print "Error " . $mail->getMessage();
+		$email = new \IGBIllinois\email(settings::get_smtp_host(),settings::get_smtp_port(),settings::get_smtp_username(),settings::get_smtp_password());
+		$email->set_to_emails(settings::get_emails());
+		try {
+			$result = $email->send_email(settings::get_from_email(),$subject,"",$html_message);
+		} catch (Exception $e) {
+			error_log($e->getMessage());
 			return false;
 		}
 		return true;

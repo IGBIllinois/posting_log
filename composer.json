@@ -11,13 +11,9 @@
                 "components/jqueryui": "1.12.1",
 		"twbs/bootstrap": "4.5.2",
 		"fortawesome/font-awesome": "5.14.0",
-		"pear/mail_mime": "1.10.9",
-		"pear/auth_sasl": "v1.1.0",
-		"pear/net_smtp": "1.9.2",
-		"pear/mail": "1.4.1",
 		"twig/twig": "v3.0.5",
 		"phpoffice/phpspreadsheet": "1.14.1",
-		"igbillinois/igbillinois-php": "1.0"
+		"igbillinois/igbillinois-php": "1.1"
 	},
 	"scripts": {
 		"post-update-cmd": [

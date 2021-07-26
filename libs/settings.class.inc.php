@@ -86,6 +86,21 @@ class settings {
 
 	}
 
+	public static function get_smtp_username() {
+                if (defined("SMTP_USERNAME")) {
+                        return SMTP_USERNAME;
+                }
+                return false;
+        }
+
+        public static function get_smtp_password() {
+                if (defined("SMTP_PASSWORD")) {
+                        return SMTP_PASSWORD;
+                }
+                return false;
+
+        }
+
 	public static function get_email_css() {
 			
 		$file_path = dirname(__DIR__) . "/" . EMAIL_CSS;

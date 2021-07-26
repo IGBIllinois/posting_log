@@ -24,6 +24,8 @@ define("LOCK_FILE","/var/lock/posting_log");
 /////////Email Settings///////////
 define("SMTP_HOST","localhost");
 define("SMTP_PORT",25);
+define("SMTP_USERNAME","");
+define("SMTP_PASSWORD","");
 define("FROM","");
 define("TO","");
 

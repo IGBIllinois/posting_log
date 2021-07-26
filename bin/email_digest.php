@@ -67,7 +67,7 @@ elseif (isset($options['date'])) {
 		print("Please specify date with --date='YYYY-MM-DD'\n");
 		exit(1);
 	}
-	if (!\IGBIllinois\Helper\date_helper::verify_date($options['date'])) {
+	if (!\IGBIllinois\Helper\date_helper::verify_date($options['date'] . " 00:00:00")) {
 		print("Invalid date format for --date\n");
                 exit(1);
 	}
@@ -95,6 +95,5 @@ try {
 catch (Exception $e) {
 	print $e->getMessage() . "\n";
 }
-
 
 ?>
