@@ -1,4 +1,18 @@
 {
+
+    "name": "igbillinois/posting_log",
+    "description": "View apache logs for downloaded files via S3 Minio URLs",
+    "keywords": ["template", "composer", "package"],
+    "license": "GPL-3.0-only",
+    "homepage": "https://www.github.com/IGBIllinois/posting_log",
+    "authors": [
+        {
+            "name": "David Slater",
+            "email": "dslater@illinois.edu"
+        }
+    ],
+    "type": "project",
+
 	"repositories" : [
 	{
 		"type": "vcs",
