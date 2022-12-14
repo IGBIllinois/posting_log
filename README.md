@@ -3,7 +3,7 @@ Biotech Website to view apache logs for downloaded files via S3 Minio URLs
 
 This is used with [https://github.com/IGBIllinois/s3_posting](https://github.com/IGBIllinois/s3_posting)
 
-[![Build Status](https://www.travis-ci.com/IGBIllinois/posting_log.svg?token=6A3MBozQfRa8weLubuLw&branch=master)](https://www.travis-ci.com/IGBIllinois/posting_log)
+[![Build Status](https://github.com/IGBIllinois/posting_log/actions/workflows/main.yml/badge.svg)](https://github.com/IGBIllinois/posting_log/actions/workflows/main.yml)
 
 ## Requirements
 * Apache
