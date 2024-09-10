@@ -15,7 +15,7 @@ This is used with [https://github.com/IGBIllinois/s3_posting](https://github.com
 ## Installation
 * Git clone repository or download a tag release
 ```
-git clone https://github.com/IGB-UIUC/posting_log posting_log
+git clone https://github.com/IGBIllinois/posting_log posting_log
 ```
 * Create mysql database
 ```
