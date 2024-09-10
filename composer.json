@@ -25,7 +25,7 @@
                 "components/jqueryui": "1.12.1",
 		"twbs/bootstrap": "4.6.2",
 		"fortawesome/font-awesome": "5.14.0",
-		"twig/twig": "v3.4.3",
+		"twig/twig": "v3.14.0",
 		"igbillinois/igbillinois-php": "1.2.3"
 	},
 	"scripts": {
