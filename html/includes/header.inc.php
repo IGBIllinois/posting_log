@@ -21,13 +21,13 @@ require_once 'includes/main.inc.php';
 
 </head>
 
-<body style='padding-top: 70px; padding-bottom: 60px;'>
-<nav class='navbar fixed-top navbar-dark bg-dark'>
+<body style='padding-top: 60px; padding-bottom: 60px;'>
+<nav class='navbar fixed-top navbar-dark bg-dark py-0'>
 	<a class='navbar-brand' href='#'><?php echo settings::get_title(); ?></a>
 	<span class='navbar-text'>
-	<a class='btn btn-primary' href='index.php'><i class='fas fa-download'></i> Downloads</a>
-	<a class='btn btn-success' href='uploads.php'><i class='fas fa-upload'></i> Uploads</a>
-	<a class='btn btn-secondary' href='about.php'><i class='fas fa-info-circle'></i> About</a>
+	<a class='btn btn-sm btn-primary' href='index.php'><i class='fas fa-download'></i> Downloads</a>
+	<a class='btn btn-sm btn-success' href='uploads.php'><i class='fas fa-upload'></i> Uploads</a>
+	<a class='btn btn-sm btn-secondary' href='about.php'><i class='fas fa-info-circle'></i> About</a>
 	</span>
 </nav>
 <p>
