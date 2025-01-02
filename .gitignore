@@ -2,4 +2,3 @@
 /vendor
 /html/vendor
 /html/.htaccess
-composer.lock
